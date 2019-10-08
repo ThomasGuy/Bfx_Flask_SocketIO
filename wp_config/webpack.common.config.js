@@ -70,7 +70,6 @@ module.exports = {
           },
         ],
       },
-      // loaders: [
       // the url-loader uses DataUrls. 
       // the file-loader emits files. 
       {
@@ -81,7 +80,6 @@ module.exports = {
         test: /\.(ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "file-loader"
       },
-      // ]
     ],
   },
 
@@ -106,8 +104,8 @@ module.exports = {
     //   },
     // }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      // filename: isDevelopment ? '[name].css' : '[name].[hash].css',
+      // filename: '[name].css',
+      filename: isDevelopment ? '[name].css' : '[name].[hash].css',
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
     }),
     new CopyWebpackPlugin([
