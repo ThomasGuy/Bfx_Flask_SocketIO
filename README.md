@@ -1,6 +1,6 @@
-# Flask_React_Webpack_Starter
+# Flask SocketIO React server/client
 
-## A boilerplate on vscode
+## A Flask SocketIO dynamic server with Reactjs client using Bitfinex-api-py
 
 ### from 'theProject' directory in a terminal run:-
 
@@ -10,20 +10,18 @@ npm install
 
 npm run build:dev
 
-### starts webpack dev server for client, this poxies output to flask server
-
-### http:/localhost:5000
+### To start webpack dev server for client, this poxies to flask server http:/localhost:5000
 
 npm run serve
 
 ### in another terminal to start Flask, setup python virtual enviroment:-
 
-python -m venv myenv
+python3 -m venv myenv
 
 ### activate it, then:-
 
-pip install -r requirements.txt
-python run.py
+pip3 install -r requirements.txt
+python3 run.py
 
 ### eslint can be run globally or added to package.json "devDependecies":-
 
