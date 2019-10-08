@@ -16,7 +16,7 @@ npm run serve
 
 ### in another terminal to start Flask, setup python virtual enviroment:-
 
-python3 -m venv myenv
+python3 -m venv venv
 
 ### activate it, then:-
 
