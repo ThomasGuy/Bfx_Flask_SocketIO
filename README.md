@@ -26,6 +26,8 @@ source venv/bin/activate
 
 pip3 install -r requirements.txt
 
+now python3 setup.py install from 'bitfinex-api-py' directory
+
 python3 run.py
 
 ### eslint can be installed globally or added to package.json "devDependecies":-
