@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require("path");
-// const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -108,19 +107,14 @@ module.exports = {
   },
 
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   title: "The Webpack4 Project",
-    //   template: "./theProject/templates/ticker.html",
-    //   inject: true,
-    //   minify: {
-    //     removeComments: true,
-    //     collapseWhitespace: false,
-    //   },
-    // }),
     new MiniCssExtractPlugin({
       // filename: '[name].css',
-      filename: isDevelopment ? "[name].css" : "[name].[hash].css",
-      chunkFilename: isDevelopment ? "[id].css" : "[id].[hash].css"
+      filename: isDevelopment
+        ? "styles/[name].css"
+        : "styles/[name].[hash].css",
+      chunkFilename: isDevelopment
+        ? "styles/[id].css"
+        : "styles/[id].[hash].css"
     }),
     new CopyWebpackPlugin([
       {
