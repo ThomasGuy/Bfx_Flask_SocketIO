@@ -10,7 +10,7 @@
     "watch": "webpack -w --mode development",
     "serve": "npm run watch && npm run start",
     "cleanWin": "rmdir /s /q node_modules",
-    "cleanUnix": "sudo rm -rf node_modules/",
+    "cleanUnix": "rm -rf node_modules/",
     "reinstall": "npm run cleanUnix && npm install"
   },
   "keywords": [],
