@@ -5,13 +5,13 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const isDevelopment = process.env.NODE_ENV === 'development';
+const isDevelopment = process.env.NODE_ENV === "development";
 
 module.exports = {
   entry: "./theProject/client/static/js/main.jsx",
   output: {
     path: path.resolve(__dirname, "../theProject/client/dist"),
-    filename: "js/[name].js",
+    filename: "js/[name].js"
   },
 
   module: {
@@ -20,24 +20,24 @@ module.exports = {
         test: [/.js$|.jsx$/],
         exclude: /(node_modules)/,
         use: {
-          loader: "babel-loader",
-        },
+          loader: "babel-loader"
+        }
       },
       {
         test: /\.module\.s(a|c)ss$/,
         loader: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: true,
-              sourceMap: isDevelopment,
+              sourceMap: isDevelopment
             }
           },
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
             options: {
-              sourceMap: isDevelopment,
+              sourceMap: isDevelopment
               // hmr: isDevelopment,
             }
           }
@@ -47,12 +47,12 @@ module.exports = {
         test: /\.s(a|c)ss$/,
         exclude: /\.module.(s(a|c)ss)$/,
         loader: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
+          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
+          "css-loader",
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
             options: {
-              sourceMap: isDevelopment,
+              sourceMap: isDevelopment
               // hmr: isDevelopment,
             }
           }
@@ -65,32 +65,46 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: "assets/images/",
-            },
-          },
-        ],
+              outputPath: "assets/images/"
+            }
+          }
+        ]
       },
-      // the url-loader uses DataUrls. 
-      // the file-loader emits files. 
+      // the url-loader uses DataUrls.
+      // the file-loader emits files.
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader?limit=10000&mimetype=application/font-woff"
+        loader: "url-loader?limit=10000&mimetype=application/font-woff",
+        options: {
+          name: "[name].[ext]",
+          outputPath: "assets/fonts/"
+        }
       },
       {
         test: /\.(ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader"
-      },
-    ],
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          outputPath: "assets/fonts/"
+        }
+      }
+    ]
   },
 
   resolve: {
     alias: {
-      "@scss": path.resolve(__dirname, "../theProject/client/static/stylesheets"),
-      "@img": path.resolve(__dirname, "../theProject/client/static/assets/images"),
-      "@": path.resolve(__dirname, "../theProject/client/static"),
+      "@scss": path.resolve(
+        __dirname,
+        "../theProject/client/static/stylesheets"
+      ),
+      "@img": path.resolve(
+        __dirname,
+        "../theProject/client/static/assets/images"
+      ),
+      "@": path.resolve(__dirname, "../theProject/client/static")
     },
     modules: ["node_modules", path.resolve(__dirname, "theProject/client")],
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx"]
   },
 
   plugins: [
@@ -105,17 +119,17 @@ module.exports = {
     // }),
     new MiniCssExtractPlugin({
       // filename: '[name].css',
-      filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-      chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+      filename: isDevelopment ? "[name].css" : "[name].[hash].css",
+      chunkFilename: isDevelopment ? "[id].css" : "[id].[hash].css"
     }),
     new CopyWebpackPlugin([
       {
         from: "./theProject/client/static/assets/images",
-        to: "assets/images",
-      },
+        to: "assets/images"
+      }
     ]),
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: true,
-    }),
-  ],
+      cleanOnceBeforeBuildPatterns: true
+    })
+  ]
 };
