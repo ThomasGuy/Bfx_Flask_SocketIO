@@ -24,7 +24,9 @@ source venv/bin/activate
 
 pip3 install -r requirements.txt
 
-now python3 setup.py install from 'bitfinex-api-py' directory
+git clone ''' bitfinex-api-py '''
+
+python setup.py install from 'bitfinex-api-py' directory
 
 python3 run.py
 
