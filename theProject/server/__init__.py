@@ -1,4 +1,4 @@
-from flask import Flask, g
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from .events import sockio
 
@@ -19,15 +19,11 @@ def create_app(Config):
     sockio.init_app(app)
 
     with app.app_context():
-        from theProject.server.routes import bp as home_bp
-        app.register_blueprint(home_bp)
-        from theProject.server.data import bp as data_bp
-        app.register_blueprint(data_bp)
-        from theProject.server.errors import err
-        app.register_blueprint(err)
-        from theProject.server.tickers import bp as ticker_bp
-        app.register_blueprint(ticker_bp)
-        from theProject.server.test import bp as test_bp
-        app.register_blueprint(test_bp)
+        from theProject.server import routes, data, errors, test, tickers
+        app.register_blueprint(routes.bp)
+        app.register_blueprint(data.bp)
+        app.register_blueprint(errors.err)
+        app.register_blueprint(tickers.bp)
+        app.register_blueprint(test.bp)
 
         return app

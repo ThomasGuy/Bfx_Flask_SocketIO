@@ -1,6 +1,7 @@
-from flask import render_template
+from flask import render_template, Blueprint
 
-from . import bp
+
+bp = Blueprint('ticker', __name__)
 
 @bp.route("/api/ticker")
 def ticker():

@@ -1,6 +1,7 @@
-from flask import render_template
+from flask import render_template, Blueprint
 
-from . import bp
+
+bp = Blueprint('home', __name__)
 
 @bp.route("/")
 @bp.route("/api")

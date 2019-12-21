@@ -1,5 +1,8 @@
+from flask import Blueprint
 from theProject.server.api.getData import getData
-from . import bp
+
+
+bp = Blueprint('data', __name__)
 
 @bp.route('/api/data')
 def send():
