@@ -1,3 +1,6 @@
+'''
+    kickoff Bitfinex API
+'''
 import logging
 from . import Client
 from ..events import sockio, emit
@@ -24,7 +27,8 @@ def log_subscription(sub):
 
 @bfx.ws.on('all')
 def bfxws_data_handler(data):
-    if type(data) is list:
+    # if type(data) is list:
+    if data.isinstance(list):
         dataEvent = data[1]
         chan_id = data[0]
 

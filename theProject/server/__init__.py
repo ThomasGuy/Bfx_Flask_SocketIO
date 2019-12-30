@@ -1,9 +1,10 @@
+"""Flask Create App"""
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from .events import sockio
 
 # Globally accessible libraries
-db = SQLAlchemy()
+DB = SQLAlchemy()
 
 
 def create_app(Config):
@@ -15,7 +16,7 @@ def create_app(Config):
     app.config.from_object(Config)
 
     # Initialize Plugins
-    db.init_app(app)
+    DB.init_app(app)
     sockio.init_app(app)
 
     with app.app_context():

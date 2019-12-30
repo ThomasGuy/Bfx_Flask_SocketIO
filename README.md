@@ -4,7 +4,7 @@ A dynamic Flask SocketIO server with Reactjs client using Bitfinex-api-py cryto 
 A start towards makeing a user based trading algorithm tryout platform using live and
 historical data.
 
-### from 'theProject' directory in a terminal run:-
+## from 'theProject' directory in a terminal run:-
 
 npm install
 
@@ -16,17 +16,13 @@ To start webpack dev server for client, this poxies to flask server http:/localh
 
 npm run serve
 
-### in another terminal to start Flask, setup python virtual enviroment:-
+## in another terminal to start Flask, setup python virtual enviroment:-
 
 python3.8 -m venv venv
 
 source venv/bin/activate
 
 pip3 install -r requirements.txt
-
-git clone ''' bitfinex-api-py '''
-
-python setup.py install from 'bitfinex-api-py' directory
 
 python3 run.py
 

@@ -12,12 +12,14 @@ class Config:
 
 
 class ProdConfig(Config):
+    """Production config vars"""
     DEBUG = False
     TESTING = False
     DATABASE_URI = os.getenv('PROD_DATABASE_URI') or "sqlite:///:memory:"
 
 
 class DevConfig(Config):
+    """Development config vars"""
     DEBUG = True
     TESTING = False
     DATABASE_URI = os.getenv('DEV_DATABASE_URI') or "sqlite:///:memory:"

@@ -10,7 +10,7 @@ module.exports = {
   entry: "./theProject/client/static/js/main.jsx",
   output: {
     path: path.resolve(__dirname, "../theProject/client/dist"),
-    filename: "js/[name].js"
+    filename: "js/[name].js",
   },
 
   module: {
@@ -19,8 +19,8 @@ module.exports = {
         test: [/.js$|.jsx$/],
         exclude: /(node_modules)/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.module\.s(a|c)ss$/,
@@ -30,17 +30,17 @@ module.exports = {
             loader: "css-loader",
             options: {
               modules: true,
-              sourceMap: isDevelopment
-            }
+              sourceMap: isDevelopment,
+            },
           },
           {
             loader: "sass-loader",
             options: {
-              sourceMap: isDevelopment
+              sourceMap: isDevelopment,
               // hmr: isDevelopment,
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       {
         test: /\.s(a|c)ss$/,
@@ -51,11 +51,11 @@ module.exports = {
           {
             loader: "sass-loader",
             options: {
-              sourceMap: isDevelopment
+              sourceMap: isDevelopment,
               // hmr: isDevelopment,
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|jpeg|gif|ico)$/,
@@ -64,10 +64,10 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: "assets/images/"
-            }
-          }
-        ]
+              outputPath: "assets/images/",
+            },
+          },
+        ],
       },
       // the url-loader uses DataUrls.
       // the file-loader emits files.
@@ -76,54 +76,48 @@ module.exports = {
         loader: "url-loader?limit=10000&mimetype=application/font-woff",
         options: {
           name: "[name].[ext]",
-          outputPath: "assets/fonts/"
-        }
+          outputPath: "assets/fonts/",
+        },
       },
       {
         test: /\.(ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
-          outputPath: "assets/fonts/"
-        }
-      }
-    ]
+          outputPath: "assets/fonts/",
+        },
+      },
+    ],
   },
 
   resolve: {
     alias: {
-      "@scss": path.resolve(
-        __dirname,
-        "../theProject/client/static/stylesheets"
-      ),
-      "@img": path.resolve(
-        __dirname,
-        "../theProject/client/static/assets/images"
-      ),
-      "@": path.resolve(__dirname, "../theProject/client/static")
+      "@scss": path.resolve(__dirname, "../theProject/client/static/stylesheets"),
+      "@img": path.resolve(__dirname, "../theProject/client/static/assets/images"),
+      "@": path.resolve(__dirname, "../theProject/client/static"),
     },
     modules: ["node_modules", path.resolve(__dirname, "theProject/client")],
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
   },
 
   plugins: [
     new MiniCssExtractPlugin({
-      // filename: '[name].css',
-      filename: isDevelopment
-        ? "styles/[name].css"
-        : "styles/[name].[hash].css",
-      chunkFilename: isDevelopment
-        ? "styles/[id].css"
-        : "styles/[id].[hash].css"
+      filename: "styles/[name].css",
+      // filename: isDevelopment
+      //   ? "styles/[name].css"
+      //   : "styles/[name].[hash].css",
+      // chunkFilename: isDevelopment
+      //   ? "styles/[id].css"
+      //   : "styles/[id].[hash].css"
     }),
     new CopyWebpackPlugin([
       {
         from: "./theProject/client/static/assets/images",
-        to: "assets/images"
-      }
+        to: "assets/images",
+      },
     ]),
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: true
-    })
-  ]
+      cleanOnceBeforeBuildPatterns: true,
+    }),
+  ],
 };
