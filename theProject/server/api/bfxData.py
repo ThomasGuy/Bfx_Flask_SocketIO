@@ -10,8 +10,8 @@ bfx = Client(
     logLevel='INFO'
 )
 
-symbols = ['tBTCUSD', 'tLTCUSD', 'tETHUSD', 'tXRPUSD',
-           'tNEOUSD', 'tEOSUSD', 'tBSVUSD', 'tIOTUSD']
+symbols = ['tBTCUSD', 'tLTCUSD', 'tETHUSD', 'tXRPUSD', 'tNEOUSD',
+           'tEOSUSD', 'tBSVUSD', 'tIOTUSD', 'tETCUSD', 'tDASHUSD']
 
 
 @bfx.ws.on('error')
@@ -28,7 +28,7 @@ def log_subscription(sub):
 @bfx.ws.on('all')
 def bfxws_data_handler(data):
     # if type(data) is list:
-    if data.isinstance(list):
+    if type(data) is list:
         dataEvent = data[1]
         chan_id = data[0]
 
@@ -48,4 +48,3 @@ async def start():
     # await bfx.ws.subscribe('candles', 'tBTCUSD', timeframe='1D')
 
 bfx.ws.on('connected', start)
-bfx.ws.run()

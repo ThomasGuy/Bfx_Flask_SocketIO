@@ -9,6 +9,9 @@ disable=too-few-public-methods,
         no-init,
         len-as-condition,
         too-many-instance-attributes,
-        invalid-name
+        invalid-name,
+        logging-format-interpolation,
+        unidiomatic-typecheck,
+        missing-function-docstring,
 
 ignore=tests,websockets,rest,utils
