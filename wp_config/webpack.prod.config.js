@@ -6,6 +6,7 @@ const merge = require("webpack-merge");
 const webpackBaseConfig = require("./webpack.common.config");
 
 module.exports = merge(webpackBaseConfig, {
+  mode: "production",
   devtool: "eval",
   optimization: {
     minimizer: [new UglifyJsPlugin(), new OptimizeCSSAssetsPlugin()],
