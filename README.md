@@ -24,7 +24,7 @@ source venv/bin/activate
 
 pip3 install -r requirements.txt
 
-python3 run.py
+python run.py
 
 ### eslint can be installed globally or added to package.json "devDependecies":-
 

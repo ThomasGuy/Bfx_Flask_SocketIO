@@ -11,13 +11,13 @@ def create_app(Config):
     """Initialize the core application."""
     app = Flask(__name__,
                 instance_relative_config=False,
-                static_folder='../../theProject/client/dist',
+                static_folder='../client/dist',
                 )
     app.config.from_object(Config)
 
     # Initialize Plugins
     DB.init_app(app)
-    sockio.init_app(app)
+    sockio.init_app(app, manage_session=False)
 
     with app.app_context():
         from theProject.server import routes, data, errors, test, tickers
@@ -27,4 +27,4 @@ def create_app(Config):
         app.register_blueprint(tickers.bp)
         app.register_blueprint(test.bp)
 
-        return app
+        return app, sockio

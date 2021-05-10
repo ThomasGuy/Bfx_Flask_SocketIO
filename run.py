@@ -1,8 +1,8 @@
 ''' kick off '''
-from theProject.server import create_app, sockio
+from theProject.server import create_app
 from theProject.server.api.bfxData import bfx
 
-app = create_app('config.DevConfig')
+app, sockio = create_app('config.DevConfig')
 
 
 if __name__ == "__main__":

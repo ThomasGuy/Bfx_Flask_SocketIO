@@ -3,7 +3,7 @@
 '''
 import logging
 from . import Client
-from ..events import sockio, emit
+from ..events import sockio
 
 log = logging.getLogger(__name__)
 bfx = Client(
@@ -16,7 +16,7 @@ symbols = ['tBTCUSD', 'tLTCUSD', 'tETHUSD', 'tXRPUSD', 'tNEOUSD',
 
 @bfx.ws.on('error')
 def log_error(err):
-    log.error("Error: {}".format(err))
+    log.error("Error: {}".format(err), exc_info=True)
 
 
 @bfx.ws.on('subscribed')

@@ -1,4 +1,4 @@
-aiohttp==4.0.0a1
+
 astroid==2.3.3
 async-timeout==3.0.1
 asyncio==3.4.3

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/state-in-constructor */
 import React from "react";
-import openSocket from 'socket.io-client';
+// import openSocket from "socket.io-client";
 import Ticker from "./Ticker";
 
 class App extends React.Component {
@@ -9,21 +9,20 @@ class App extends React.Component {
     error: null,
     isLoaded: false,
     tickers: {},
-
   };
 
   componentDidMount() {
     fetch("http://localhost:5000/api/data")
-      .then((response) => {
+      .then(response => {
         return response.json();
       })
-      .then((myJson) => {
+      .then(myJson => {
         this.setState({ tickers: myJson });
         this.setState({ isLoaded: true });
       });
   }
 
-  addCoins = (coin) => {
+  addCoins = coin => {
     const coins = { ...this.state.tickers };
     coins[coin.key()] = coin.value();
     this.setState({ tickers: coins });

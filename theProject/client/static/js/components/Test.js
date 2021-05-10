@@ -4,7 +4,6 @@ import io from 'socket.io-client';
 
 const socket = io('http://localhost:5000');
 
-
 class Test extends React.Component {
   state = {
     message: false,
@@ -12,15 +11,19 @@ class Test extends React.Component {
   };
 
   componentDidMount() {
-    socket.on('connect', () => { console.log('connected') });
-    socket.on('event', (data) => {
+    socket.on('connect', () => {
+      console.log('test connected');
+    });
+    socket.on('event', data => {
       // console.log('Got data:', data.symbol);
       this.setState({
         response: data,
-        message: data.symbol
-      })
+        message: data.symbol,
+      });
     });
-    socket.on('disconnect', () => { console.log('Disconnect to server') });
+    socket.on('disconnect', () => {
+      console.log('Disconnect to server');
+    });
   }
 
   render() {
@@ -31,7 +34,7 @@ class Test extends React.Component {
         <h3>{message}</h3>
         <h4>{response.data}</h4>
       </div>
-    )
+    );
   }
 }
 

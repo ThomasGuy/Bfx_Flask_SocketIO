@@ -2,7 +2,7 @@ import logging
 # import json
 
 from flask_socketio import SocketIO, emit
-from flask import current_app, request
+from flask import request
 
 
 log = logging.getLogger(__name__)
